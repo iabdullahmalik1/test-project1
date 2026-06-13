@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BrewBazaar – Coming Soon</title>
+  <meta name="description" content="BrewBazaar is a curated online shop for home coffee lovers. Nespresso pods, Lavazza Rosa, specialty ground coffees, and coffee syrups. Coming soon." />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --brown-dark: #2C1A0E;
+      --brown-mid:  #5C3317;
+      --brown-warm: #8B4513;
+      --cream:      #FAF6F0;
+      --cream-mid:  #F2EAE0;
+      --gold:       #C9963A;
+      --gold-light: #E8B96A;
+      --text-dark:  #1E1007;
+      --text-muted: #7A5C45;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--cream);
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(160deg, var(--brown-dark) 0%, var(--brown-mid) 60%, #7B3B1A 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 24px 60px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(201,150,58,0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 56px;
+      opacity: 0.9;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(201,150,58,0.18);
+      border: 1px solid rgba(201,150,58,0.4);
+      color: var(--gold-light);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 6px 18px;
+      border-radius: 100px;
+      margin-bottom: 28px;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 6vw, 4.2rem);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.18;
+      max-width: 760px;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 span { color: var(--gold-light); }
+
+    .hero-sub {
+      font-size: clamp(1rem, 2vw, 1.15rem);
+      color: rgba(255,255,255,0.75);
+      max-width: 580px;
+      margin-bottom: 48px;
+      line-height: 1.7;
+    }
+
+    .cta-wrap { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+
+    .btn-primary {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--gold) 0%, #A8751F 100%);
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      padding: 16px 40px;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: opacity 0.2s, transform 0.15s;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+    }
+    .btn-primary:hover { opacity: 0.92; transform: translateY(-2px); }
+
+    .cta-note {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.45);
+      letter-spacing: 0.02em;
+    }
+
+    /* ── TRUST STRIP ── */
+    .trust-strip {
+      background: var(--brown-dark);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      padding: 18px 24px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .trust-item {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.55);
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .trust-item span { color: var(--gold-light); font-size: 1rem; }
+
+    /* ── SECTIONS SHARED ── */
+    section { padding: 88px 24px; }
+
+    .section-inner {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 700;
+      color: var(--brown-dark);
+      line-height: 1.22;
+      margin-bottom: 20px;
+    }
+
+    .section-body {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      max-width: 600px;
+      line-height: 1.8;
+      margin-bottom: 48px;
+    }
+
+    /* ── PRODUCTS ── */
+    .products-section { background: var(--cream); }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 24px;
+      margin-top: 8px;
+    }
+
+    .product-card {
+      background: #fff;
+      border: 1px solid rgba(139,69,19,0.1);
+      border-radius: 12px;
+      padding: 32px 24px;
+      transition: box-shadow 0.2s, transform 0.15s;
+    }
+    .product-card:hover { box-shadow: 0 8px 32px rgba(44,26,14,0.1); transform: translateY(-3px); }
+
+    .product-icon { font-size: 2rem; margin-bottom: 16px; }
+
+    .product-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--brown-dark);
+      margin-bottom: 8px;
+    }
+
+    .product-desc {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ── WHY ── */
+    .why-section { background: var(--cream-mid); }
+
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 32px;
+    }
+
+    .pillar { }
+
+    .pillar-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      color: var(--gold);
+      opacity: 0.4;
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+
+    .pillar-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--brown-dark);
+      margin-bottom: 8px;
+    }
+
+    .pillar-body {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* ── EARLY ACCESS ── */
+    .early-section {
+      background: linear-gradient(135deg, var(--brown-dark) 0%, var(--brown-mid) 100%);
+      text-align: center;
+    }
+
+    .early-section .section-title { color: #fff; }
+    .early-section .section-label { color: var(--gold-light); }
+
+    .early-body {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.65);
+      max-width: 520px;
+      margin: 0 auto 40px;
+      line-height: 1.8;
+    }
+
+    .signup-form {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      max-width: 480px;
+      margin: 0 auto 16px;
+    }
+
+    .signup-form input[type="email"] {
+      flex: 1;
+      min-width: 220px;
+      padding: 15px 20px;
+      border-radius: 6px;
+      border: none;
+      font-size: 0.97rem;
+      font-family: 'Inter', sans-serif;
+      outline: none;
+      background: rgba(255,255,255,0.96);
+      color: var(--text-dark);
+    }
+    .signup-form input[type="email"]::placeholder { color: #aaa; }
+
+    .signup-form button {
+      background: linear-gradient(135deg, var(--gold) 0%, #A8751F 100%);
+      color: #fff;
+      font-size: 0.95rem;
+      font-weight: 600;
+      padding: 15px 28px;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      transition: opacity 0.2s;
+      white-space: nowrap;
+    }
+    .signup-form button:hover { opacity: 0.9; }
+
+    .form-note {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.35);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--brown-dark);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      text-align: center;
+      padding: 36px 24px;
+    }
+
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 10px;
+    }
+
+    .footer-tagline {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 6px;
+      font-style: italic;
+    }
+
+    .footer-copy {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.2);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      .trust-strip { gap: 20px; }
+      .signup-form { flex-direction: column; }
+      .signup-form input[type="email"],
+      .signup-form button { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════ HERO ══════════ -->
+  <section class="hero">
+    <div class="logo">BrewBazaar</div>
+    <div class="hero-badge">☕ Coming Soon</div>
+    <h1>Your Next Great Cup<br>Is <span>Almost Here.</span></h1>
+    <p class="hero-sub">BrewBazaar is a curated online shop for home coffee lovers - stocking premium Nespresso pods, Lavazza Rosa, specialty ground coffees, and indulgent coffee syrups. We open soon. Your mornings are about to get a whole lot better.</p>
+    <div class="cta-wrap">
+      <a href="#early-access" class="btn-primary">→ Get Early Access</a>
+      <span class="cta-note">No spam. Just an early invite when we go live.</span>
+    </div>
+  </section>
+
+  <!-- ══════════ TRUST STRIP ══════════ -->
+  <div class="trust-strip">
+    <div class="trust-item"><span>☕</span> 1,200+ coffee lovers already waiting</div>
+    <div class="trust-item"><span>⭐</span> Curated for taste, not just price</div>
+    <div class="trust-item"><span>📦</span> Free shipping on first orders</div>
+  </div>
+
+  <!-- ══════════ PRODUCTS ══════════ -->
+  <section class="products-section">
+    <div class="section-inner">
+      <p class="section-label">What's Coming</p>
+      <h2 class="section-title">The Good Stuff.<br>All in One Place.</h2>
+      <p class="section-body">We've spent months hunting down the coffees worth drinking, so you don't have to settle for whatever's left on the supermarket shelf.</p>
+      <div class="products-grid">
+        <div class="product-card">
+          <div class="product-icon">☕</div>
+          <div class="product-name">Nespresso-Compatible Pods</div>
+          <p class="product-desc">Premium single-serve pods that rival the originals - without the price tag.</p>
+        </div>
+        <div class="product-card">
+          <div class="product-icon">🌹</div>
+          <div class="product-name">Lavazza Qualità Rosa</div>
+          <p class="product-desc">The Italian classic. Smooth, aromatic, and effortlessly everyday.</p>
+        </div>
+        <div class="product-card">
+          <div class="product-icon">🫘</div>
+          <div class="product-name">Specialty Ground Coffees</div>
+          <p class="product-desc">Carefully sourced blends and single origins for pour-over, French press, and espresso fans.</p>
+        </div>
+        <div class="product-card">
+          <div class="product-icon">🍦</div>
+          <div class="product-name">Coffee Syrups</div>
+          <p class="product-desc">Vanilla, caramel, hazelnut and beyond - café-style drinks, made at home.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ WHY BREWBAZAAR ══════════ -->
+  <section class="why-section">
+    <div class="section-inner">
+      <p class="section-label">Why BrewBazaar</p>
+      <h2 class="section-title">Not Just a Shop.<br>A Better Morning Ritual.</h2>
+      <div class="pillars">
+        <div class="pillar">
+          <div class="pillar-num">01</div>
+          <div class="pillar-title">Curated, not overwhelming</div>
+          <p class="pillar-body">Every product on BrewBazaar earns its spot. No filler, no infinite scroll through mediocre options.</p>
+        </div>
+        <div class="pillar">
+          <div class="pillar-num">02</div>
+          <div class="pillar-title">Built for home brewers</div>
+          <p class="pillar-body">Whether you're a Nespresso devotee or a grind-it-yourself purist, we've got your setup covered.</p>
+        </div>
+        <div class="pillar">
+          <div class="pillar-num">03</div>
+          <div class="pillar-title">Quality that doesn't break the bank</div>
+          <p class="pillar-body">Premium coffee shouldn't be a luxury. We source smart so the pricing makes sense.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ EARLY ACCESS / SIGNUP ══════════ -->
+  <section class="early-section" id="early-access">
+    <div class="section-inner">
+      <p class="section-label">Early Access</p>
+      <h2 class="section-title">Great Coffee Starts Here.</h2>
+      <p class="early-body">Early access members get first dibs on launch offers, introductory pricing, and a few surprises we're keeping under wraps. Drop your email - we'll come to you.</p>
+      <form class="signup-form" onsubmit="handleSubmit(event)">
+        <input type="email" placeholder="your@email.com" required />
+        <button type="submit">→ Get Early Access</button>
+      </form>
+      <p class="form-note">Join in under 10 seconds. No spam, ever.</p>
+    </div>
+  </section>
+
+  <!-- ══════════ FOOTER ══════════ -->
+  <footer>
+    <div class="footer-logo">BrewBazaar</div>
+    <p class="footer-tagline">Curated Coffee, Delivered to Your Door.</p>
+    <p class="footer-copy">brewbazaar.store &nbsp;·&nbsp; © 2026 BrewBazaar. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function handleSubmit(e) {
+      e.preventDefault();
+      const input = e.target.querySelector('input[type="email"]');
+      const btn = e.target.querySelector('button');
+      btn.textContent = '✓ You're on the list!';
+      btn.style.background = '#2C7A3E';
+      input.disabled = true;
+      btn.disabled = true;
+    }
+  </script>
+
+</body>
+</html>
